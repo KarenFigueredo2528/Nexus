@@ -1,42 +1,40 @@
-# Nexus
-Aplicación web desarrollada como proyecto final de la asignatura Bases de Datos 2 de la Universidad El Bosque.
+# Nexus  
+Web application developed as the final project for the Database 2 course at Universidad El Bosque.
 
-# Proyecto Final - Nómina
+# Final Project – Payroll (Nexus)
 
-Sistema de información web para la gestión de nómina en Colombia, desarrollado para la materia Bases de Datos 2 - Universidad El Bosque.
+A web-based information system for payroll management in Colombia, developed for the Database 2 course at Universidad El Bosque.
 
-## 🧾 Descripción
+## 🧾 Description
 
-Este proyecto permite administrar empleados, contratos, pagos mensuales, seguridad social, cesantías, y liquidaciones finales. Combina bases de datos relacionales y no relacionales para almacenar y consultar eficientemente la información.
+This project enables the management of employees, contracts, monthly payments, social security, severance, and final settlements. It combines relational and non-relational databases to store and efficiently query information.
 
-## 🔧 Tecnologías utilizadas
+## 🔧 Technologies Used
 
-- **Frontend:** React / Vue / Angular
-- **Backend:** Node.js / Spring Boot / Django
-- **Base de datos relacional:** PostgreSQL / MySQL
-- **Base de datos NoSQL:** MongoDB
-- **VM:** CentOS / Fedora
+- **Frontend:** React  
+- **Backend:** Spring Boot / Java  
+- **Relational Database:** MySQL  
+- **NoSQL Database:** MongoDB  
+- **VM:** [To be defined]
 
-## 📁 Estructura del repositorio
+## 📁 Repository Structure
 
-- `frontend/`: Aplicación web
-- `backend/`: API para manejo de lógica del sistema
-- `database/`: Modelos, scripts y archivos de inserción
-- `vm/`: Configuración y evidencias de la máquina virtual
-- `docs/`: Documentación del proyecto (entregables)
+- `frontend/`: Web application  
+- `backend/`: API for system logic  
+- `database/`: Models, scripts, and insertion files  
+- `vm/`: Configuration and evidence of the virtual machine  
+- `docs/`: Project documentation (deliverables)
 
-## 🗓 Cronograma y entregables
+## 🗓 Timeline and Deliverables
 
-Ver [docs/cronograma_actividades.xlsx](./docs/cronograma_actividades.xlsx)
+See [insert timeline link]
 
-## 👥 Equipo
+## 👥 Team
 
-- Karen (Líder del proyecto)
-- [Nombre 2]
-- [Nombre 3]
-- [Nombre 4]
+- Miguel Angel Sanchez Achury  
+- Julieth Dayana Serrano Castañeda  
+- Karen Ximena Buitrago Figueredo
 
-## 📜 Licencia
+## 📜 License
 
-Este proyecto se realiza con fines educativos.
-
+This project is carried out for educational purposes only.
