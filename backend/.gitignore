@@ -1,0 +1,51 @@
+# Node.js Modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment Variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Editor Configuration Files
+.vscode/
+.idea/
+.DS_Store
+
+# Cache and Logs
+*.log
+logs/
+*.log.*
+*.swp
+.pnpm-debug.log*
+
+# NPM and Yarn Cache
+.cache/
+.yarn/
+
+# Deployment Files (Docker, PM2, etc.)
+docker-compose.override.yml
+*.tar
+*.gz
+dist/
+coverage/
+out/
+build/
+
+# Test Configuration Files
+jest.config.js
+coverage/
+nyc_output/
+
+# System-Specific Configuration Files
+*.iml
+*.sublime*
+*.code-workspace
+
+# Operating System Configuration Files
+Thumbs.db
+Desktop.ini
