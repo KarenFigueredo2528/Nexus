@@ -11,11 +11,11 @@ This project enables the management of employees, contracts, monthly payments, s
 
 ## 🔧 Technologies Used
 
-- **Frontend:** React  
-- **Backend:** Spring Boot / Java  
-- **Relational Database:** MySQL  
+- **Frontend:** React, JavaScript 
+- **Backend:**  Node, JavaScript y Express
+- **Relational Database:** MariaDB
 - **NoSQL Database:** MongoDB  
-- **VM:** [To be defined]
+- **VM:** Debian 12
 
 ## 📁 Repository Structure
 
