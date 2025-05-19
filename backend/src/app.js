@@ -5,6 +5,7 @@ import employeeRoutes from './modules/employees/employees.routes.js';
 import departmentRoutes from './modules/departments/departments.routes.js';
 import contractRoutes from './modules/contracts/contracts.routes.js';
 import socialSecurityRoutes from './modules/socialSecurity/socialSecurity.routes.js';
+import payrollRoutes from './modules/payroll/payroll.routes.js';
 import errorHandler from './middlewares/errorHandler.middleware.js';
 
 const app = express();
@@ -15,6 +16,7 @@ app.use('/api/employees', employeeRoutes);
 app.use('/api/departments', departmentRoutes);
 app.use('/api/contracts', contractRoutes);
 app.use('/api/social-security', socialSecurityRoutes);
+app.use('/api/payroll', payrollRoutes);
 
 app.use(errorHandler);
 
