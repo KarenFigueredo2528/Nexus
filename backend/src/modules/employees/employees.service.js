@@ -2,11 +2,7 @@ import { mariaDB } from '../../config/database.config.js';
 
 export const getAll = async () => {
     const [rows] = await mariaDB.query(`
-        SELECT 
-            e.*, 
-            calculate_seniority(e.employee_id) AS seniority,
-            IF(is_active_contract(e.employee_id), 'Active', 'Inactive') AS active_contract
-        FROM EMPLOYEE e
+        SELECT * FROM EMPLOYEE
     `);
     return rows;
 };
