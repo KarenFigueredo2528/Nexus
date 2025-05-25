@@ -1,22 +1,31 @@
 import { mariaDB } from "../../config/database.config.js";
 
 export const getAll = async () => {
-  const [rows] = await mariaDB.query(`
-        SELECT * FROM EMPLOYEE
-    `);
+  const [rows] = await mariaDB.query(
+    `
+      SELECT 
+        e.*, 
+        calculate_seniority(e.employee_id) AS seniority,
+        IF(is_active_contract(e.employee_id), 'Active', 'Inactive') AS active_contract,
+        get_absent_days(e.employee_id) AS total_absences
+      FROM EMPLOYEE e
+      WHERE e.status = 'Active'
+    `
+  );
+
   return rows;
 };
 
 export const getById = async (id) => {
   const [rows] = await mariaDB.query(
     `
-        SELECT 
-            e.*, 
-            calculate_seniority(e.employee_id) AS seniority,
-            IF(is_active_contract(e.employee_id), 'Active', 'Inactive') AS active_contract,
-            get_absent_days(e.employee_id) AS total_absences
-        FROM EMPLOYEE e 
-        WHERE e.employee_id = ?
+      SELECT 
+        e.*, 
+        calculate_seniority(e.employee_id) AS seniority,
+        IF(is_active_contract(e.employee_id), 'Active', 'Inactive') AS active_contract,
+        get_absent_days(e.employee_id) AS total_absences
+      FROM EMPLOYEE e 
+      WHERE e.employee_id = ? AND e.status = 'Active'
     `,
     [id]
   );
