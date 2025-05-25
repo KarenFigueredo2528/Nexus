@@ -56,12 +56,16 @@ router.get("/:id", jobPositionController.getJobPositionById);
  *           schema:
  *             type: object
  *             properties:
- *               title:
+ *               name:
  *                 type: string
  *               description:
  *                 type: string
  *               department_id:
  *                 type: integer
+ *               level:
+ *                type: string
+ *               base_salary:
+ *                type: number
  *     responses:
  *       201:
  *         description: Puesto creado exitosamente
@@ -96,6 +100,10 @@ router.post("/", jobPositionController.createJobPosition);
  *                 type: string
  *               department_id:
  *                 type: integer
+ *               level:
+ *                type: string
+ *               base_salary:
+ *                type: number
  *     responses:
  *       200:
  *         description: Puesto actualizado exitosamente
