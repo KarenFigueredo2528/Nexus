@@ -56,15 +56,21 @@ router.get("/:id", socialSecurityController.getSocialSecurityById);
  *           schema:
  *             type: object
  *             properties:
- *               employee_id:
- *                 type: integer
- *               health_provider:
- *                 type: string
- *               pension_provider:
- *                 type: string
- *               affiliation_date:
+ *               registration_date:
  *                 type: string
  *                 format: date
+ *               health_contribution:
+ *                 type: number
+ *                 format: float
+ *               pension_contribution:
+ *                 type: number
+ *                 format: float
+ *               risk_contribution:
+ *                 type: number
+ *                 format: float
+ *               parafiscal_contribution:
+ *                 type: number
+ *                 format: float
  *     responses:
  *       201:
  *         description: Registro creado exitosamente
