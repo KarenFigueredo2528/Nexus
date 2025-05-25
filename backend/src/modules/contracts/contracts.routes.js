@@ -58,13 +58,21 @@ router.get("/:id", contractController.getContractById);
  *             properties:
  *               employee_id:
  *                 type: integer
+ *               job_psoition_id:
+ *                 type: integer
+ *               agreed_salary:
+ *                 type: number
+ *               department_id:
+ *                 type: integer
+ *               total_deductions:
+ *                 type: number
  *               start_date:
  *                 type: string
  *                 format: date
  *               end_date:
  *                 type: string
  *                 format: date
- *               salary:
+ *               net_salary:
  *                 type: number
  *                 format: float
  *               contract_type:
@@ -97,13 +105,23 @@ router.post("/", contractController.createContract);
  *           schema:
  *             type: object
  *             properties:
+ *               employee_id:
+ *                 type: integer
+ *               job_psoition_id:
+ *                 type: integer
+ *               agreed_salary:
+ *                 type: number
+ *               department_id:
+ *                 type: integer
+ *               total_deductions:
+ *                 type: number
  *               start_date:
  *                 type: string
  *                 format: date
  *               end_date:
  *                 type: string
  *                 format: date
- *               salary:
+ *               net_salary:
  *                 type: number
  *                 format: float
  *               contract_type:
