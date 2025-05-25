@@ -60,6 +60,8 @@ router.get("/:id", departmentController.getDepartmentById);
  *                 type: string
  *               location:
  *                 type: string
+ *               description:
+ *                 type: string
  *     responses:
  *       201:
  *         description: Departamento creado exitosamente
