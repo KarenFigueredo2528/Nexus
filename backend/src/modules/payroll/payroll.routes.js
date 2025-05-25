@@ -101,21 +101,20 @@ router.post("/", payrollController.createPayroll);
  *           schema:
  *             type: object
  *             properties:
- *               period_start:
+ *               contract_id:
+ *                 type: integer
+ *                 description: ID del contrato asociado
+ *               payment_date:
  *                 type: string
  *                 format: date
- *               period_end:
+ *                 description: Fecha en que se realiza el pago
+ *               period:
  *                 type: string
- *                 format: date
- *               base_salary:
+ *                 description: Descripción del periodo de pago (ej. "Junio 2025")
+ *               total_earnings:
  *                 type: number
  *                 format: float
- *               deductions:
- *                 type: number
- *                 format: float
- *               bonuses:
- *                 type: number
- *                 format: float
+ *                 description: Total devengado antes de deducciones
  *     responses:
  *       200:
  *         description: Registro de nómina actualizado exitosamente
