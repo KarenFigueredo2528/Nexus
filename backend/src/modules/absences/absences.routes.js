@@ -58,14 +58,18 @@ router.get("/:id", absencesController.getAbsenceById);
  *             properties:
  *               employee_id:
  *                 type: integer
+ *               absence_type:
+ *                 type: string
  *               start_date:
  *                 type: string
- *                 format: date
+ *                 format: date-time
  *               end_date:
  *                 type: string
- *                 format: date
- *               reason:
- *                 type: string
+ *                 format: date-time
+ *               days_absent:
+ *                 type: integer
+ *               total_absent_days:
+ *                 type: integer
  *     responses:
  *       201:
  *         description: Ausencia creada exitosamente
