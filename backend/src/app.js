@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./config/swagger.js";
+import morgan from "morgan";
 
 import employeeRoutes from "./modules/employees/employees.routes.js";
 import departmentRoutes from "./modules/departments/departments.routes.js";
@@ -13,6 +14,9 @@ import absencesRoutes from "./modules/absences/absences.routes.js";
 import jobPositionRoutes from "./modules/jobPosition/jobPosition.routes.js";
 
 const app = express();
+
+// 👉 Usa el middleware de morgan
+app.use(morgan("dev"));
 
 app.use(bodyParser.json());
 
