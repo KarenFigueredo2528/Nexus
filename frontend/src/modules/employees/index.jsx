@@ -70,7 +70,7 @@ const Employees = () => {
                 <TableCell>Phone</TableCell>
                 <TableCell>Hire Date</TableCell>
                 <TableCell>Status</TableCell>
-                <TableCell>Actions</TableCell> {/* Nueva columna */}
+                <TableCell>Actions</TableCell> 
               </TableRow>
             </TableHead>
             <TableBody>

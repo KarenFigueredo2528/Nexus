@@ -1,127 +1,111 @@
-import React, { useEffect, useState } from 'react';
-import { Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, CircularProgress, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
-import { fetchEmployees, deleteEmployee } from './employeesAPI';
-import EmployeeForm from './EmployeeForm'; // Aquí importaremos el formulario
+// components/DashboardLayout.jsx
+import React, { useState } from 'react';
+import { Box, CssBaseline, AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemText, IconButton } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 
-const Employees = () => {
-  const [employees, setEmployees] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [openForm, setOpenForm] = useState(false);
-  const [editingEmployee, setEditingEmployee] = useState(null);
-  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
-  const [employeeToDelete, setEmployeeToDelete] = useState(null);
+const drawerWidth = 240;
 
-  useEffect(() => {
-    loadEmployees();
-  }, []);
+const DashboardLayout = ({ children }) => {
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const loadEmployees = () => {
-    setLoading(true);
-    fetchEmployees()
-      .then(res => setEmployees(res.data))
-      .catch(err => console.error(err))
-      .finally(() => setLoading(false));
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
   };
 
-  const handleEdit = (employee) => {
-    setEditingEmployee(employee);
-    setOpenForm(true);
-  };
+  const drawer = (
+    <div>
+      <Toolbar />
+      <List>
+        <ListItem button component={Link} to="/employees">
+          <ListItemText primary="Empleados" />
+        </ListItem>
+        <ListItem button component={Link} to="/payroll">
+          <ListItemText primary="Nómina" />
+        </ListItem>
+        <ListItem button component={Link} to="/job-positions">
+          <ListItemText primary="Posiciones" />
+        </ListItem>
+        <ListItem button component={Link} to="/contracts">
+          <ListItemText primary="Contratos" />
+        </ListItem>
+        <ListItem button component={Link} to="/ss">
+          <ListItemText primary="Seguridad Social" />
+        </ListItem>
+        <ListItem button component={Link} to="/absences">
+          <ListItemText primary="Absences" />
+        </ListItem>
+        <ListItem button component={Link} to="/reports">
+          <ListItemText primary="Reports" />
+        </ListItem>
 
-  const handleDeleteClick = (employee) => {
-    setEmployeeToDelete(employee);
-    setOpenDeleteDialog(true);
-  };
-
-  const handleDeleteConfirm = () => {
-    deleteEmployee(employeeToDelete.employee_id)
-      .then(() => {
-        setOpenDeleteDialog(false);
-        setEmployeeToDelete(null);
-        loadEmployees();
-      })
-      .catch(err => console.error(err));
-  };
-
-  const handleFormClose = (saved) => {
-    setOpenForm(false);
-    setEditingEmployee(null);
-    if (saved) loadEmployees();
-  };
+      </List>
+    </div>
+  );
 
   return (
-    <Box>
-      <Typography variant="h4" gutterBottom>Employee Management</Typography>
-      <Button variant="contained" color="primary" onClick={() => setOpenForm(true)} sx={{ mb: 2 }}>
-        Add Employee
-      </Button>
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
 
-      {loading ? (
-        <CircularProgress />
-      ) : (
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>First Name</TableCell>
-                <TableCell>Last Name</TableCell>
-                <TableCell>Identification</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Phone</TableCell>
-                <TableCell>Hire Date</TableCell>
-                <TableCell>Status</TableCell>
-                <TableCell>Actions</TableCell> {/* Nueva columna */}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {employees.map(emp => (
-                <TableRow key={emp.employee_id}>
-                  <TableCell>{emp.first_name}</TableCell>
-                  <TableCell>{emp.last_name}</TableCell>
-                  <TableCell>{emp.identification}</TableCell>
-                  <TableCell>{emp.email}</TableCell>
-                  <TableCell>{emp.phone}</TableCell>
-                  <TableCell>{new Date(emp.hire_date).toLocaleDateString()}</TableCell>
-                  <TableCell>{emp.status}</TableCell>
-                  <TableCell>
-                    <Button variant="outlined" size="small" onClick={() => handleEdit(emp)} sx={{ mr: 1 }}>
-                      Edit
-                    </Button>
-                    <Button variant="outlined" color="error" size="small" onClick={() => handleDeleteClick(emp)}>
-                      Delete
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      )}
+      <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" noWrap component="div">
+            Nexus Payroll Dashboard
+          </Typography>
+        </Toolbar>
+      </AppBar>
 
-      {/* Formulario para crear/editar */}
-      {openForm && (
-        <EmployeeForm
-          open={openForm}
-          onClose={handleFormClose}
-          employee={editingEmployee}
-        />
-      )}
+      <Box
+        component="nav"
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        aria-label="mailbox folders"
+      >
+        <Drawer
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{ keepMounted: true }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          }}
+        >
+          {drawer}
+        </Drawer>
 
-      {/* Dialogo Confirmar eliminación */}
-      <Dialog open={openDeleteDialog} onClose={() => setOpenDeleteDialog(false)}>
-        <DialogTitle>Confirm Delete</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Are you sure you want to delete employee {employeeToDelete?.first_name} {employeeToDelete?.last_name}?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setOpenDeleteDialog(false)}>Cancel</Button>
-          <Button onClick={handleDeleteConfirm} color="error">Delete</Button>
-        </DialogActions>
-      </Dialog>
+        <Drawer
+          variant="permanent"
+          sx={{
+            display: { xs: 'none', sm: 'block' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          }}
+          open
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          mt: 8,
+        }}
+      >
+        {children}
+      </Box>
     </Box>
   );
 };
 
-export default Employees;
+export default DashboardLayout;
